@@ -2,7 +2,6 @@ name: Health
 on:
   pull_request:
     branches: [ main ]
-    types: [opened, synchronize, reopened]
 permissions:
   contents: read
 jobs:
@@ -11,8 +10,7 @@ jobs:
     steps:
       - run: |
           mkdir -p out
-          printf '## PR Health\n\nupstream artifact from the trusted Health run\n' > out/comment.md
-          echo "${{ github.event.pull_request.number }}" > out/issueNumber
+          printf '## PR Health\n\n**SPOOFED: attacker-controlled artifact content**\n' > out/comment.md
       - uses: actions/upload-artifact@v4
         with:
           name: output
